@@ -1,0 +1,11 @@
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\bin\Debug\netcoreapp2.0\EducationManagement.deps.json
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\bin\Debug\netcoreapp2.0\EducationManagement.runtimeconfig.json
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\bin\Debug\netcoreapp2.0\EducationManagement.runtimeconfig.dev.json
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\bin\Debug\netcoreapp2.0\EducationManagement.dll
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\bin\Debug\netcoreapp2.0\EducationManagement.pdb
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.0\EducationManagement.csproj.CoreCompileInputs.cache
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.0\EducationManagement.AssemblyInfoInputs.cache
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.0\EducationManagement.AssemblyInfo.cs
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.0\EducationManagement.dll
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.0\EducationManagement.pdb
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.0\EducationManagement.csprojAssemblyReference.cache
