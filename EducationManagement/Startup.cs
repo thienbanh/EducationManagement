@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using EducationManagement.Repository;
+using DataTables.AspNet.AspNetCore;
 
 namespace EducationManagement
 {
@@ -25,7 +26,7 @@ namespace EducationManagement
         {
 
             services.AddMvc();
-
+            services.RegisterDataTables();
             var connection = @"Server=THIEN-PC\SQLEXPRESS;Database=EducationManagement1;Trusted_Connection=True;";
             services.AddDbContext<EducationManagementContext>(options => options.UseSqlServer(connection));
         }

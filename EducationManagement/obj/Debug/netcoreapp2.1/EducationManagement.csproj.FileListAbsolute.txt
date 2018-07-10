@@ -29,4 +29,9 @@ E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Deb
 E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Grades\Details.g.cshtml.cs
 E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Grades\Edit.g.cshtml.cs
 E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Grades\Index.g.cshtml.cs
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Classes\Create.g.cshtml.cs
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Classes\Delete.g.cshtml.cs
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Classes\Details.g.cshtml.cs
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Classes\Edit.g.cshtml.cs
+E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Classes\Index.g.cshtml.cs
 E:\Năm 4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\EducationManagement.csprojAssemblyReference.cache

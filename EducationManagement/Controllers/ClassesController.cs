@@ -7,27 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EducationManagement.Entities;
 using EducationManagement.Repository;
-using DataTables.AspNet.Core;
 using DataTables.AspNet.AspNetCore;
+using DataTables.AspNet.Core;
 
 namespace EducationManagement.Controllers
 {
-    public class GradesController : Controller
+    public class ClassesController : Controller
     {
         private readonly EducationManagementContext _context;
 
-        public GradesController(EducationManagementContext context)
+        public ClassesController(EducationManagementContext context)
         {
             _context = context;
         }
 
-        // GET: Grades
-        public IActionResult Index()
+        // GET: Classes
+        public async Task<IActionResult> Index()
         {
-            return View(_context.Grades.ToList());
+            var educationManagementContext = _context.Classes.Include(c => c.Grades);
+            return View(await educationManagementContext.ToListAsync());
         }
 
-        // GET: Grades/Details/5  {controller}/{action}/{optional parameter}
+        // GET: Classes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,41 +36,42 @@ namespace EducationManagement.Controllers
                 return NotFound();
             }
 
-            var grades = await _context.Grades
+            var classes = await _context.Classes
+                .Include(c => c.Grades)
                 .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (grades == null)
+            if (classes == null)
             {
                 return NotFound();
             }
 
-            return View(grades);
+            return View(classes);
         }
 
-        // GET: Grades/Create
-        [HttpGet]
+        // GET: Classes/Create
         public IActionResult Create()
         {
+            ViewData["GradesId"] = new SelectList(_context.Grades, "Id", "Name");
             return View();
         }
 
-        // POST: Grades/Create
+        // POST: Classes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Grades grades)
+        public async Task<IActionResult> Create([Bind("Id,Name,GradesId,CreateDate,UpdateDate")] Classes classes)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(grades);
+                _context.Add(classes);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(grades);
+            ViewData["GradesId"] = new SelectList(_context.Grades, "Id", "Id", classes.GradesId);
+            return View(classes);
         }
 
-        // GET: Grades/Edit/5
+        // GET: Classes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,22 +79,23 @@ namespace EducationManagement.Controllers
                 return NotFound();
             }
 
-            var grades = await _context.Grades.FindAsync(id);
-            if (grades == null)
+            var classes = await _context.Classes.FindAsync(id);
+            if (classes == null)
             {
                 return NotFound();
             }
-            return View(grades);
+            ViewData["GradesId"] = new SelectList(_context.Grades, "Id", "Id", classes.GradesId);
+            return View(classes);
         }
 
-        // POST: Grades/Edit/5
+        // POST: Classes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Grades grades)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,GradesId,CreateDate,UpdateDate")] Classes classes)
         {
-            if (id != grades.Id)
+            if (id != classes.Id)
             {
                 return NotFound();
             }
@@ -101,12 +104,12 @@ namespace EducationManagement.Controllers
             {
                 try
                 {
-                    _context.Update(grades);
+                    _context.Update(classes);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GradesExists(grades.Id))
+                    if (!ClassesExists(classes.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +120,11 @@ namespace EducationManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(grades);
+            ViewData["GradesId"] = new SelectList(_context.Grades, "Id", "Id", classes.GradesId);
+            return View(classes);
         }
 
-        // GET: Grades/Delete/5
+        // GET: Classes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,52 +132,42 @@ namespace EducationManagement.Controllers
                 return NotFound();
             }
 
-            var grades = await _context.Grades
+            var classes = await _context.Classes
+                .Include(c => c.Grades)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (grades == null)
+            if (classes == null)
             {
                 return NotFound();
             }
 
-            return View(grades);
+            return View(classes);
         }
 
-        // POST: Grades/Delete/5
+        // POST: Classes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var grades = await _context.Grades.FindAsync(id);
-            _context.Grades.Remove(grades);
+            var classes = await _context.Classes.FindAsync(id);
+            _context.Classes.Remove(classes);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GradesExists(int id)
+        private bool ClassesExists(int id)
         {
-            return _context.Grades.Any(e => e.Id == id);
+            return _context.Classes.Any(e => e.Id == id);
         }
 
-        public DataTablesJsonResult GetListGrades(IDataTablesRequest request,string name) {
-            var dataPage = new List<Grades>();
-            var total = _context.Grades.Count();
-            var filter = 0;
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                //phan trang tai dong request.Start va lay so luong tai request.Length
-                filter = _context.Grades.Where(x => x.Name.Contains(name)).Count();
-                dataPage = _context.Grades.Where(x=>x.Name.Contains(name)).Skip(request.Start).Take(request.Length).ToList();
-            }
-            else
-            {
-                filter = total;
-                dataPage = _context.Grades.Skip(request.Start).Take(request.Length).ToList();
-            }
-            var response = DataTablesResponse.Create(request, total, filter, dataPage);
+        public DataTablesJsonResult GetListClassesByGradeId(IDataTablesRequest request, int gradeId)
+        {
+            var dataPage = new List<Classes>();
+            //phan trang tai dong request.Start va lay so luong tai request.Length
+            var total = _context.Classes.Count();
+            dataPage = _context.Classes.Where(x => x.GradesId == gradeId).ToList();
+            var response = DataTablesResponse.Create(request, total, total, dataPage);
 
             return new DataTablesJsonResult(response, true);
         }
-
-
     }
 }
