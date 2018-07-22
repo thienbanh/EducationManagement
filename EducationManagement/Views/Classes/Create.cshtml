@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@section css{
+    <link href="~/css/bootstrap-datetimepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+}
 <h2>Create</h2>
 
 <h4>Classes</h4>
@@ -18,18 +20,13 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GradesId" class="control-label"></label>
-                <select asp-for="GradesId" class ="form-control" asp-items="ViewBag.GradesId"></select>
+                <label asp-for="Grades" class="control-label"></label>
+                <select asp-for="GradesId" class="form-control" asp-items="ViewBag.GradesId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CreateDate" class="control-label"></label>
-                <input asp-for="CreateDate" class="form-control" />
+                <input type="text" asp-for="CreateDate" class="form-control" />
                 <span asp-validation-for="CreateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdateDate" class="control-label"></label>
-                <input asp-for="UpdateDate" class="form-control" />
-                <span asp-validation-for="UpdateDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -41,3 +38,22 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@section scripts{
+
+    <script src="~/css/bootstrap-datetimepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $('#CreateDate').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose: true
+        })
+        $('#UpdateDate').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose: true
+        })
+        $('#Dob').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose: true
+        })
+    </script>
+
+}

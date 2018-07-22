@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\EducationManagement",
+    "\\EducationManagement\\bin",
+    "\\EducationManagement\\Controllers",
+    "\\EducationManagement\\Entities",
+    "\\EducationManagement\\Helper",
+    "\\EducationManagement\\Models",
+    "\\EducationManagement\\obj",
+    "\\EducationManagement\\Repository",
+    "\\EducationManagement\\Views"
+  ],
+  "SelectedNode": "\\EducationManagement.sln",
+  "PreviewInSolutionExplorer": false
+}

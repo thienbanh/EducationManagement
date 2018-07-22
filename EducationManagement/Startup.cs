@@ -27,7 +27,8 @@ namespace EducationManagement
 
             services.AddMvc();
             services.RegisterDataTables();
-            var connection = @"Server=THIEN-PC\SQLEXPRESS;Database=EducationManagement1;Trusted_Connection=True;";
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+            var connection = @"Server=DESKTOP-VD7UT40\SQLEXPRESS;Database=EducationManagement1;Trusted_Connection=True;";
             services.AddDbContext<EducationManagementContext>(options => options.UseSqlServer(connection));
         }
 

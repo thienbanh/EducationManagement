@@ -1,0 +1,80 @@
+﻿@model EducationManagement.Entities.Students
+@using EducationManagement.Helper
+@{
+    ViewData["Title"] = "Create";
+}
+@section css{
+    <link href="~/css/bootstrap-datetimepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+}
+<h2>Create</h2>
+
+<h4>Students</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label"></label>
+                <input asp-for="StudentId" class="form-control" />
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                <input type="text" asp-for="Dob" class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderEnum>()" class="form-control">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Classes" class="control-label"></label>
+                <select asp-for="ClassesId" class="form-control" asp-items="ViewBag.ClassesId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input type="text" asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section scripts {
+    <script src="~/css/bootstrap-datetimepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $('#CreateDate').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose: true
+        })
+        $('#UpdateDate').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose: true
+        })
+        $('#Dob').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose: true
+        })
+    </script>
+}

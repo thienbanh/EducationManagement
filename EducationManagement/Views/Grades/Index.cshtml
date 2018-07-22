@@ -4,36 +4,49 @@
     Layout = "_Layout";
 }
 <style>
-    td.details-control {
-        background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
-        cursor: pointer;
+    td.details-control { 
+        background: url('../../images/if_plus_1891033.png') no-repeat center center;
     }
 
     tr.details td.details-control {
-        background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
+        background: url('../../images/details_close.png') no-repeat center center;
+
     }
 </style>
-<p>
-    <a asp-action="Create">Create Grade</a>
-</p>
-<a href='@(Url.Action("Create","Classes"))?id=" + data.id + "'>Create Class</a>
+<form class="form-group">
+    <section class="content-header">
+        <h1>Grades and Classes
+            <small>Index</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Grades and Class</a></li>
+            <li class="active">Index</li>
+        </ol>
+    </section>
+</form>
+<form class="form-group">
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create Grade</a>
+        <a href='@Url.Action("Create","Classes")' class="btn btn-success">Create Class</a>
+    </p>
+</form>
 <form class="form-inline form-group">
     <div style="float:right">
-        <input type="text" id="search" class="form-control" style="width:250px" placeholder="Search here…" />
-        <button id="btnSubmit" type="button" class="btn btn-info fa fa-search" style="height:34px;float:right"></button>
+            <input type="text" id="search" class="form-control" style="width:250px" placeholder="Search here…" />
+            <button id="btnSubmit" type="button" class="btn btn-info fa fa-search" style="height:34px;float:right"></button>
     </div>
 </form>
 
 
-<table name="" id="indexTable" class="table table-striped table-bordered table-responsive display " style="width:100%"></table>
-@section scripts{
-    <script>
+    <table name="" id="indexTable" class="table table-striped table-bordered table-responsive display " style="width:100%"></table>
+    @section scripts{
+        <script>
         $(document).ready(function () {
             function format(d) {
                 return '<table name="" id="' + d.id + '" class="table table-responsive table-hover table-condensed " style="width:100%"></table>';
             }
             var table = $("#indexTable").DataTable({
-
                 "serverSide": true,
                 "ajax": {
                     "url": "@Url.Action("GetListGrades", "Grades")",
@@ -148,6 +161,6 @@
                 table.clear().draw();
              });
         });
-    </script>
-}
+        </script>
+    }
 
