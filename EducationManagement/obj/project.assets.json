@@ -14615,6 +14615,9 @@
       "DataTables.AspNet.AspNetCore >= 2.0.2",
       "DotNetCore.NPOI >= 1.0.2",
       "Microsoft.AspNetCore.All >= 2.1.1",
+      "Microsoft.AspNetCore.Authentication >= 2.1.1",
+      "Microsoft.AspNetCore.Identity >= 2.1.1",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 2.1.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.1.1",
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -14628,11 +14631,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Năm 4\\EducationManagementASP\\EducationManagement\\EducationManagement\\EducationManagement.csproj",
+      "projectUniqueName": "F:\\Nam4\\EducationManagementASP\\EducationManagement\\EducationManagement\\EducationManagement.csproj",
       "projectName": "EducationManagement",
-      "projectPath": "F:\\Năm 4\\EducationManagementASP\\EducationManagement\\EducationManagement\\EducationManagement.csproj",
+      "projectPath": "F:\\Nam4\\EducationManagementASP\\EducationManagement\\EducationManagement\\EducationManagement.csproj",
       "packagesPath": "C:\\Users\\THIEN\\.nuget\\packages\\",
-      "outputPath": "F:\\Năm 4\\EducationManagementASP\\EducationManagement\\EducationManagement\\obj\\",
+      "outputPath": "F:\\Nam4\\EducationManagementASP\\EducationManagement\\EducationManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14671,6 +14674,18 @@
             "version": "[1.0.2, )"
           },
           "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
+          "Microsoft.AspNetCore.Authentication": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
+          "Microsoft.AspNetCore.Identity": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[2.1.1, )"
           },

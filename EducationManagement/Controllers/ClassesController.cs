@@ -9,9 +9,11 @@ using EducationManagement.Entities;
 using EducationManagement.Repository;
 using DataTables.AspNet.AspNetCore;
 using DataTables.AspNet.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EducationManagement.Controllers
 {
+    [Authorize(Roles = "Assistant")]
     public class ClassesController : Controller
     {
         private readonly EducationManagementContext _context;

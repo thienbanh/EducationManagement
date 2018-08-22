@@ -17,9 +17,11 @@ using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using EducationManagement.Models;
 using EducationManagement.Helper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EducationManagement.Controllers
 {
+    [Authorize(Roles = "Assistant")]
     public class StudentsController : Controller
     {
         private readonly EducationManagementContext _context;
@@ -31,6 +33,7 @@ namespace EducationManagement.Controllers
         }
 
         // GET: Students
+        
         public async Task<IActionResult> Index()
         {
             var educationManagementContext = _context.Students.Include(s => s.Classes);

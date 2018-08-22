@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using EducationManagement.Repository;
 using DataTables.AspNet.AspNetCore;
+using EducationManagement.Models;
 
 namespace EducationManagement
 {
@@ -24,6 +22,19 @@ namespace EducationManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //for identity
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            })
+           .AddEntityFrameworkStores<EducationManagementContext>()
+           .AddDefaultTokenProviders();
 
             services.AddMvc();
             services.RegisterDataTables();
@@ -44,6 +55,8 @@ namespace EducationManagement
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseAuthentication();
 
             app.UseStaticFiles();
 

@@ -9,9 +9,11 @@ using EducationManagement.Entities;
 using EducationManagement.Repository;
 using DataTables.AspNet.Core;
 using DataTables.AspNet.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EducationManagement.Controllers
 {
+    [Authorize(Roles = "Assistant")]
     public class GradesController : Controller
     {
         private readonly EducationManagementContext _context;
@@ -154,7 +156,8 @@ namespace EducationManagement.Controllers
             return _context.Grades.Any(e => e.Id == id);
         }
 
-        public DataTablesJsonResult GetListGrades(IDataTablesRequest request,string name) {
+        public DataTablesJsonResult GetListGrades(IDataTablesRequest request, string name)
+        {
             var dataPage = new List<Grades>();
             var total = _context.Grades.Count();
             var filter = 0;
@@ -162,7 +165,7 @@ namespace EducationManagement.Controllers
             {
                 //phan trang tai dong request.Start va lay so luong tai request.Length
                 filter = _context.Grades.Where(x => x.Name.Contains(name)).Count();
-                dataPage = _context.Grades.Where(x=>x.Name.Contains(name)).Skip(request.Start).Take(request.Length).ToList();
+                dataPage = _context.Grades.Where(x => x.Name.Contains(name)).Skip(request.Start).Take(request.Length).ToList();
             }
             else
             {
