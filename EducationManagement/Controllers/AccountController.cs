@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EducationManagement.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -58,7 +58,19 @@ namespace EducationManagement.Controllers
                 if (result.Succeeded)
                 {
                     if (returnUrl != null)
-                        return RedirectToLocal(returnUrl);
+                    {
+                        var user = _context.Users.Where(a => a.Email == model.Email).Include(m => m.Roles).FirstOrDefault();
+                        if (user !=null)
+                        {
+                            return RedirectToLocal(user.Roles.FirstOrDefault().Role.DefaultPage);
+                        }
+                        else
+                        {
+                            await _signInManager.SignOutAsync();
+                            return RedirectToAction("Login", "Account");
+                        }
+
+                    }
                     else
                     {
                         return RedirectToAction("Index", "Grades");
@@ -119,13 +131,22 @@ namespace EducationManagement.Controllers
                 if (result.Succeeded)
                 {
                     //Check role is exist
-                    bool x = await _roleManager.RoleExistsAsync(model.Role);
+                    // any có tồn tại gì đó hay không trả về true false bool
+                    bool x = _context.Roles.Any(r => r.Name == model.Role);
                     if (!x)
                     {
                         // first we create Admin role   
                         var role = new ApplicationRole();
                         role.Name = model.Role;
-                        role.DefaultPage = "/Account/Login";
+                        switch (model.Role)
+                        {
+                            case "Admin":
+                                role.DefaultPage = "/Account/Index";
+                                break;
+                            case "Assistant":
+                                role.DefaultPage = "/Grades/Index";
+                                break;
+                        }
                         //Create new role
                         await _roleManager.CreateAsync(role);
                     }
@@ -172,59 +193,39 @@ namespace EducationManagement.Controllers
             // get role form roles
             var user = _context.Set<ApplicationUser>()
                 .Include(u => u.Roles)
-                .ThenInclude(r => r.Role);
+                .ThenInclude(r => r.Role).ToList();
             ViewData["ReturnUrl"] = returnUrl;
-            return View(_userManager.Users.ToList());
+            return View(user);
+        }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return View(account);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var account = await _context.Users.FindAsync(id);
+            _context.Users.Remove(account);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
-        public DataTablesJsonResult GetListUser(IDataTablesRequest request, string name)
+        private bool UsersExists(int id)
         {
-
-            var total = _userManager.Users.Count();
-            var filter = 0;
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                //phan trang tai dong request.Start va lay so luong tai request.Length
-                filter = _userManager.Users.Where(x => x.Name.Contains(name)).Count();
-                var dataPage = _userManager.Users.Where(x => x.Name.Contains(name))
-                    .Skip(request.Start)
-                    .Take(request.Length)
-                    .Select(s => new
-                    {
-                        s.StaffId,
-                        s.Name,
-                        s.Email,
-                        s.OtherEmail,
-                        s.Phone1,
-                        s.Phone2,
-                        Status = s.Status.ToString(),
-                        Role = s.Roles.ToString(),
-                        CreateDate = s.CreateDate.ToShortDateString(),
-                        UpdateDate = s.UpdateDate.ToShortDateString(),
-                    }).ToList();
-                var response = DataTablesResponse.Create(request, total, filter, dataPage);
-                return new DataTablesJsonResult(response, true);
-            }
-            else
-            {
-                filter = total;
-                var dataPage = _userManager.Users
-                    .Skip(request.Start)
-                    .Take(request.Length)
-                    .Select(s => new
-                    {
-                        s.Id,
-                        s.Email,
-                        s.Phone1,
-                        s.Phone2,
-                        Status = s.Status.ToString(),
-                        Role = s.Roles.ToString(),
-                        CreateDate = s.CreateDate.ToShortDateString(),
-                        UpdateDate = s.UpdateDate.ToShortDateString(),
-                    }).ToList();
-                var response = DataTablesResponse.Create(request, total, filter, dataPage);
-                return new DataTablesJsonResult(response, true);
-            }
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 

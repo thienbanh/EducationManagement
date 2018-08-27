@@ -126,4 +126,4 @@ F:\Nam4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug
 F:\Nam4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
 F:\Nam4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 F:\Nam4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Account\Index.g.cshtml.cs
-F:\Nam4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\EducationManagement.csprojAssemblyReference.cache
+F:\Nam4\EducationManagementASP\EducationManagement\EducationManagement\obj\Debug\netcoreapp2.1\Razor\Views\Account\Delete.g.cshtml.cs

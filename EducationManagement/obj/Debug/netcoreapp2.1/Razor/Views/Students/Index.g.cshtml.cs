@@ -72,7 +72,7 @@ using EducationManagement.Models;
             WriteLiteral("\r\n<h2>Index</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(131, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c5ee19302c1f4a6cb62dc7b25cc2eeb8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6446a4a1315640b7aa3b76b9b6374bec", async() => {
                 BeginContext(178, 15, true);
                 WriteLiteral("Create Students");
                 EndContext();
@@ -110,7 +110,7 @@ using EducationManagement.Models;
                 ");
             EndContext();
             BeginContext(754, 669, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b7fbdd4275745ff9d29147670d61a83", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07d5e54caf5740a48273553a36d0df4c", async() => {
                 BeginContext(804, 612, true);
                 WriteLiteral(@"
                     <div class=""row"">
@@ -146,7 +146,7 @@ using EducationManagement.Models;
             WriteLiteral("\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n");
             EndContext();
             BeginContext(1483, 322, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f69263c98094244a53e72d73e66c6f5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82352225392d497fb6221be77099e256", async() => {
                 BeginContext(1520, 278, true);
                 WriteLiteral(@"
     <div style=""float:right"">
@@ -174,7 +174,7 @@ using EducationManagement.Models;
             WriteLiteral("\r\n<table name=\"\" id=\"indexTable\" class=\"table table-striped table-bordered table-responsive display \" style=\"width:100%\"></table>\r\n<div class=\"row\">\r\n    <div class=\"col-md-8\" style=\"padding-top:10px;\">\r\n        ");
             EndContext();
             BeginContext(2017, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57083daab3724b8a827e4edb512c2aea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdb287bd40f0405c8b494757034c2b21", async() => {
                 BeginContext(2072, 6, true);
                 WriteLiteral("Export");
                 EndContext();

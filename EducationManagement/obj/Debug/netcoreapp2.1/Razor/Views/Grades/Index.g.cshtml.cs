@@ -76,7 +76,7 @@ using EducationManagement.Models;
 ");
             EndContext();
             BeginContext(394, 390, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d69c6f67a2474fcfb43ec33e260653c1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9de2693ed4644d0a8ddd27804db76854", async() => {
                 BeginContext(419, 358, true);
                 WriteLiteral(@"
     <section class=""content-header"">
@@ -110,12 +110,12 @@ using EducationManagement.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(786, 218, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a201acbd6e4741d0ba0300621a6d2708", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0b4e9d399344f7cbfe36ba9890fb87d", async() => {
                 BeginContext(811, 19, true);
                 WriteLiteral("\r\n    <p>\r\n        ");
                 EndContext();
                 BeginContext(830, 63, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "72b604ec2b934671ac2050b0d5be4641", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e89e243e42834b01b4dd556473f2b99d", async() => {
                     BeginContext(877, 12, true);
                     WriteLiteral("Create Grade");
                     EndContext();
@@ -166,7 +166,7 @@ WriteAttributeValue("", 912, Url.Action("Create","Classes"), 912, 31, false);
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1006, 330, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "402644ec73d4403ba72ebf416211c37d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "358489115ba544c1b17e5c545850986b", async() => {
                 BeginContext(1043, 286, true);
                 WriteLiteral(@"
     <div style=""float:right"">
